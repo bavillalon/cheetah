@@ -20,9 +20,9 @@
   }
   #powered{
     position:absolute;
-    right:10%;
+    right:25%;
     font-size: 10px;
-    top:10%
+    top:20%
   }
   .navbar,h4{
     font-family: 'Montserrat', sans-serif;
@@ -39,4 +39,7 @@ a{
 a:hover{
   text-decoration: none;
   color:#492C30
+}
+.dropdown-backdrop {
+  position: static;
 }
