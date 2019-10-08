@@ -23,37 +23,6 @@
 </head>
 
 <body>
-    <!--Login pop up-->
-    <div class="modal" role="log">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Welcome to <img src="public/styles/img/minilogo.png" class="d-inline-block align-top" alt="">
-                    </a></h4><span id=powered>by Cheetah
-                    </span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary login">Login</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!--Nav Bar-->
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a class="navbar-brand" href="#" class="logfont">
@@ -62,12 +31,12 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button>Volunteer Coordinator page
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mt-2 mt-md-0 ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">LogOut <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -80,32 +49,42 @@
     </nav>
     <div id="loginbutton" style="text-align: center;font-family: 'Montserrat', sans-serif">
         <div class="row">
-            <div class="col-12"></div>
-        </div>
-        <div class="row">
-            <div class="col-4 square">
+            <div class="col-2 square">
                 <!--Margin-->
             </div>
-            <div class="col-4 square" id="log" style="background-color:#FF6E1D ">
-                <img src="public/styles/img/login.png" style="width: 33.33%" alt="Login"><br>Login
+            <div class="col-4 square" id="task_report_Byteacher" style="background-color:#FF6E1D ">
+                <img src="public/styles/img/task_report.png" style="width: 50%" alt="TaskReport"><br>Task Reports
             </div>
-        </div>
-        <div class="row">
-            <div class="col-4 square">
-                <!--Margin-->
-            </div>
-            <div class="col-4 square" id="about" style="background-color:#98D9D5">
-                <img src="public/styles/img/about.png" style="width: 33.33%" alt="Login"><br>About
+            <div class="col-4 square" id="edit_task" style="background-color:#98D9D5">
+                <img src="public/styles/img/assign_task.png" style="width: 50%" alt="AssignTask"><br>Assign Task
             </div>
         </div>
         <div class="row">
-            <div class="col-4 square">
+            <div class="col-2 square">
                 <!--Margin-->
             </div>
-            <div class="col-4 square" id="about" style="background-color:#F2484B">
-                <img src="public/styles/img/help.png" style="width: 33.33%" alt="Login"><br>Help
+            <div class="col-4 square" id="delete_task">
+                <img src="public/styles/img/new_volunteer.png" style="width: 50%" alt="NewVolunteer"><br>New
+                Volunteer
+            </div>
+            <div class="col-4 square" id="about_teacher" style="background-color:#CE938E">
+                <img src="public/styles/img/about.png" style="width: 50%" alt="About"><br>About
             </div>
         </div>
+        <div class="row">
+            <div class="col-2 square">
+                <!--Margin-->
+            </div>
+
+            <div class="col-4 square" id="help_teacher" style="background-color:#F2484B">
+                <img src="public/styles/img/help.png" style="width: 50%" alt="Help"><br>Help
+            </div>
+            <div class="col-4 square" id="logOut" style="background-color:#98D9D5">
+                <a href="index.html"><img src="public/styles/img/logout.png" style="width: 50%"
+                        alt="LogOut"><br>LogOut</a>
+            </div>
+        </div>
+
 
     </div>
 </body>
