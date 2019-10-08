@@ -1,30 +1,30 @@
 module.exports = function(sequelize, DataTypes) {
   var Task = sequelize.define("Task", {
-    Name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Description: DataTypes.TEXT,
-    Quantity: DataTypes.INTEGER,
-    Due_Date: {
+    description: DataTypes.TEXT,
+    quantity: DataTypes.INTEGER,
+    duedate: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    Est_Time: {
+    esttime: {
       type: DataTypes.TIME,
       allowNull: false
     },
-    State: DataTypes.STRING
+    state: DataTypes.STRING
   });
 
-  Task.associate = function(models) {
-    Task.belongsTo(models.User, {
-      as: "Teacher",
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // Task.associate = function(models) {
+  //   Task.belongsTo(models.User, {
+  //     as: "teacher",
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return Task;
 };
