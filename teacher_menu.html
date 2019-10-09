@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workroom</title>
+    <!--jQuery and Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
+    <!--Linking Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap" rel="stylesheet">
+    <!-- Linking CSS -->
+    <link rel="stylesheet" type="text/css" href="public/styles/styles.css">
+</head>
+
+<body>
+    <!--Task form-->
+    <div class="modal new_task_form" role="task_form">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><img src="public/styles/img/task.png" style="width: 20%" class="d-inline-block align-top" alt="">
+                            New Task</h4>
+                        </span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                        <label for="taskName">Task</label>
+                                        <select id="taskName" class="form-control">
+                                            <option selected>Choose one</option>
+                                            <option>Copy</option>
+                                            <option>Laminated</option>
+                                            <option>Cut</option>
+                                            <option>Other</option>
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" class="form-control" id="quantity">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="despcription">Description</label>
+                                <input type="text" class="form-control" id="despcription" placeholder="Brief despcription">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="dueDate">Due Date</label>
+                                    <input type="dates" class="form-control" id="dueDate">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="estimatedTime">Estimated Time</label>
+                                    <input type="time" class="form-control" id="estimatedTime">
+                                </div>
+                            </div>
+                           <!-- <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Check me out
+                                    </label>
+                                </div>
+                            </div>-->
+    
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#" class="logfont">
+            <img src="public/styles/img/minilogo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>Teacher page
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mt-2 mt-md-0 ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">LogOut <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="loginbutton" style="text-align: center;font-family: 'Montserrat', sans-serif">
+        <div class="row">
+            <div class="col-2 square">
+                <!--Margin-->
+            </div>
+            <div class="col-4 square" id="new_task" style="background-color:#F2484B ">
+                <img src="public/styles/img/task.png" style="width: 50%" alt="NewTask"><br>New Task
+            </div>
+            <div class="col-4 square" id="edit_task">
+                <img src="public/styles/img/task_edit.png" style="width: 50%" alt="EditTask"><br>Edit Task
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 square">
+                <!--Margin-->
+            </div>
+            <div class="col-4 square" id="delete_task" style="background-color:#98D9D5">
+                <img src="public/styles/img/task_delete.png" style="width: 50%" alt="Delete"><br>Delete Task
+            </div>
+            <div class="col-4 square" id="task_report_Byteacher" style="background-color:#FF6E1D ">
+                <img src="public/styles/img/task_report.png" style="width: 50%" alt="TaskReport"><br>Tasks Report
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 square">
+                <!--Margin-->
+            </div>
+            <div class="col-4 square" id="about_teacher" style="background-color:#CE938E">
+                <img src="public/styles/img/about.png" style="width: 50%" alt="About"><br>About
+            </div>
+            <div class="col-4 square" id="help_teacher" style="background-color:#F2484B">
+                <img src="public/styles/img/help.png" style="width: 50%" alt="Help"><br>Help
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 square"></div>
+            <div class="col-4 square" id="logOut" style="background-color:#98D9D5">
+                <a href="index.html"><img src="public/styles/img/logout.png" style="width: 50%"
+                        alt="LogOut"><br>LogOut</a>
+            </div>
+            <div class="col-4 square"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script src="./public/js/app.js"></script>
