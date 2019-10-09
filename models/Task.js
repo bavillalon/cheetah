@@ -6,19 +6,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     description: DataTypes.TEXT,
     quantity: DataTypes.INTEGER,
-    duedate: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    esttime: {
-      type: DataTypes.TIME,
-      allowNull: false
-    },
+    duedate: DataTypes.DATE,
+    esttime: DataTypes.TIME,
     state: DataTypes.STRING
   });
 
   Task.associate = function(models) {
-    Task.hasMany(models.UserTask);
+    Task.hasMany(models.UserTask, {
+      onDelete: "cascade"
+    });
   };
 
   return Task;
