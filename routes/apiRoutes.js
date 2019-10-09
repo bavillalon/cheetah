@@ -22,7 +22,7 @@ module.exports = function(app) {
   //Assigning a task to a volunteer{task, volunterrid}
   app.get("/api/assigningtask", function(req, res) {
     db.Task.update(
-      { state: "Done" },
+      { state: "Assigned" },
       {
         where: {
           id: req.body.task.id
@@ -41,11 +41,11 @@ module.exports = function(app) {
   //Adding a new task{task}
   app.post("/api/newtask", function(req, res) {
     db.Task.create({
-      name: req.body.name,
+      task_name: req.body.task_name,
       description: req.body.description,
       quantity: req.body.quantity,
-      duedate: req.body.duedate,
-      esttime: req.body.esttime,
+      dueDate: req.body.dueDate,
+      estimatedTime: req.body.estimatedTime,
       state: req.body.state
     }).then(function(task) {
       db.UserTask.create({
