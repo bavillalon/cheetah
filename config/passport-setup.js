@@ -21,6 +21,7 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+
 passport.use(
   new GoogleStrategy(
     {
@@ -31,7 +32,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       // passport callback function
-      console.log(profile);
+      // console.log(profile);
       //send the new user to DB from google, cheking if exits first 
       db.User.findOne({
         where: {
@@ -48,7 +49,7 @@ passport.use(
             }
           }).then(function(currentUser) {
             if (currentUser) {
-              console.log("aperecio por el correo, le agrego el googleid");
+              //aperecio por el correo, le agrego el googleid
 
               db.User.update(
                 {
@@ -63,15 +64,17 @@ passport.use(
                 done(null, currentUser);
               });
             } else {
-              // db.User.create({
-              //   name: profile.displayName,
-              //   email: profile.emails[0].value,
-              //   googleid: profile.id
-              // }).then(function(newUser) {
-              //   console.log("el nuevo user " + newUser.id); //hacer logging
-              //   done(null, newUser);
-              // });
-              done(null, currentUser);
+              db.User.create({
+                name: profile.displayName,
+                email: profile.emails[0].value,
+                googleid: profile.id
+              }).then(function(newUser) {
+                console.log("el nuevo user " + newUser.id); //hacer logging
+                done(null, newUser);
+              });
+              // window.location.replace("/");
+              // return done("err");
+              
             }
           });
         }
