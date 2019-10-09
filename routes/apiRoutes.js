@@ -33,8 +33,34 @@ module.exports = function(app) {
         TaskId: task.id,
         UserId: req.body.volunteerid
       }).then(function(usertask) {
-        res.send("Assigned");
+        res.end();
       });
+    });
+  });
+
+  //Adding a new task{task}
+  app.post("/api/newtask", function(req, res) {
+    db.Task.create({
+      name: req.body.name,
+      description: req.body.description,
+      quantity: req.body.quantity,
+      duedate: req.body.duedate,
+      esttime: req.body.esttime,
+      state: req.body.state
+    }).then(function(task) {
+      db.UserTask.create({
+        TaskId: task.id,
+        UserId: req.user.id
+      }).then(function(usertask) {
+        res.end();
+      });
+    });
+  });
+
+  //Adding a new User{user}
+  app.post("/api/newuser", function(req, res) {
+    db.User.create(req.body).then(function(user) {
+      res.json(user);
     });
   });
 
