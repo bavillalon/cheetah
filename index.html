@@ -18,13 +18,15 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Linking CSS -->
     <link rel="stylesheet" type="text/css" href="public/styles/styles.css">
 </head>
 
 <body>
     <!--Login pop up-->
-    <div class="modal" role="log">
+    <div class="modal index_login" role="log">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -36,19 +38,27 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
+                    <form>
+                        <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="username">
+              
+                        </div>
+                        <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          </div>
+                          <input type="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="row align-items-center remember">
+                          <input type="checkbox" style="color:black">Remember Me
+                        </div>
+                      </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary login">Login</button>
+                    <input type="submit" value="Login" class="btn float-right login_btn">
                 </div>
             </div>
         </div>
@@ -112,3 +122,9 @@
 
 </html>
 <script src="./public/js/app.js"></script>
+
+{{#if user}}
+    <a href="/auth/logout">Sing Out</a>
+{{else}}
+    <a href="/auth/login">Sing In</a></br>
+{{/if}}

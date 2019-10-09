@@ -25,6 +25,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/coordinator", function(req, res) {
+      res.render("coordinator_menu");
+
+  });
+  app.get("/volunteer", function(req, res) {
+    res.render("volunteer_menu");
+
+});
+
+app.get("/teacher", function(req, res) {
+  res.render("teacher_menu");
+
+});
+
+
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(

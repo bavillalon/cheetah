@@ -1,21 +1,21 @@
 module.exports = {
-  "development": {
-      "username": process.env.USER,
-      "password": process.env.PASSWORD,
-      "database": "cheetahdb",
-      "host": "localhost",
-      "dialect": "mysql"
+"development": {
+    "username": process.env.USER,
+    "password": process.env.PASSWORD,
+    "database": "cheetahdb",
+    "host": "localhost",
+    "dialect": "mysql"
+},
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
   },
-    "test": {
-      "username": "root",
-      "password": null,
-      "database": "testdb",
-      "host": "localhost",
-      "dialect": "mysql",
-      "logging": false
-    },
-    "production": {
-      "use_env_variable": "JAWSDB_URL",
-      "dialect": "mysql"
-    }
-  };
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
+};
