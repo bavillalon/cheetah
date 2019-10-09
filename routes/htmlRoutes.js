@@ -2,7 +2,7 @@ var db = require("../models");
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
-    res.redirect("/auth/login");
+    res.redirect("/");
   } else {
     next();
   }
@@ -11,18 +11,7 @@ const authCheck = (req, res, next) => {
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    var msg = "Welcome!";
-    if (req.user) {
-      msg = req.user.name;
-    }
-
-    db.User.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        user: req.user,
-        msg: msg,
-        examples: dbExamples
-      });
-    });
+    res.render("index");
   });
 
   app.get("/coordinator", function(req, res) {
@@ -53,6 +42,6 @@ app.get("/teacher", function(req, res) {
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
-    res.render("404");
+    res.render("index");
   });
 };

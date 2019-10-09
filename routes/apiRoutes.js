@@ -1,24 +1,80 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all tasks for the cordinator
+  app.get("/api/tasks", function(req, res) {
+    db.Task.findAll({}).then(function(Tasks) {
+      res.json(Tasks);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Get all unassigned tasks for the cordinator
+  app.get("/api/unassignedtasks", function(req, res) {
+    db.Task.findAll({
+      where: {
+        state: "Unassigned"
+      }
+    }).then(function(Tasks) {
+      res.json(Tasks);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  //Assigning a task to a volunteer{task, volunterrid}
+  app.get("/api/assigningtask", function(req, res) {
+    db.Task.update(
+      { state: "Done" },
+      {
+        where: {
+          id: req.body.task.id
+        }
+      }
+    ).then(function(task) {
+      db.UserTask.create({
+        TaskId: task.id,
+        UserId: req.body.volunteerid
+      }).then(function(usertask) {
+        res.end();
+      });
     });
   });
+
+  //Adding a new task{task}
+  app.post("/api/newtask", function(req, res) {
+    db.Task.create({
+      name: req.body.name,
+      description: req.body.description,
+      quantity: req.body.quantity,
+      duedate: req.body.duedate,
+      esttime: req.body.esttime,
+      state: req.body.state
+    }).then(function(task) {
+      db.UserTask.create({
+        TaskId: task.id,
+        UserId: req.user.id
+      }).then(function(usertask) {
+        res.end();
+      });
+    });
+  });
+
+  //Adding a new User{user}
+  app.post("/api/newuser", function(req, res) {
+    db.User.create(req.body).then(function(user) {
+      res.json(user);
+    });
+  });
+
+  //   // Create a new example
+  //   app.post("/api/examples", function(req, res) {
+  //     db.Example.create(req.body).then(function(dbExample) {
+  //       res.json(dbExample);
+  //     });
+  //   });
+
+  //   // Delete an example by id
+  //   app.delete("/api/examples/:id", function(req, res) {
+  //     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  //       res.json(dbExample);
+  //     });
+  //   });
 };

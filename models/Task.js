@@ -17,14 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     state: DataTypes.STRING
   });
 
-  // Task.associate = function(models) {
-  //   Task.belongsTo(models.User, {
-  //     as: "teacher",
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
+  Task.associate = function(models) {
+    Task.hasMany(models.UserTask);
+  };
 
   return Task;
 };

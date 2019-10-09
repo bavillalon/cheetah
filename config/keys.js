@@ -1,10 +1,9 @@
 module.exports = {
   google: {
-    clientID:
-      "176663177048-46phpc9625ot8krk1qprvqm5fnjgbucq.apps.googleusercontent.com",
-    clientSecret: "PkaZ_GE4h8V9Ot_gfXWPol4q"
+    clientID: process.env.G_CLIENTID,
+    clientSecret: process.env.G_CLIENTSECRET
   },
   session: {
-    cookieKey: "cheetahcookiesession"
+    cookieKey: process.env.SESSION_COOKIEKEY
   }
 };

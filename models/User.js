@@ -15,9 +15,9 @@ module.exports = function(sequelize, DataTypes) {
     grade: DataTypes.INTEGER
   });
 
-  // User.associate = function(models) {
-  //   User.hasMany(models.Task, {});
-  // };
+  User.associate = function(models) {
+    User.hasMany(models.UserTask);
+  };
 
   return User;
 };
