@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     estimatedTime: {
-      type: DataTypes.TIME,
+      type: DataTypes.STRING,
       allowNull: false
     },
     state: DataTypes.STRING

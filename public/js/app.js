@@ -44,15 +44,21 @@ var NewTaskSubmit = function (event) {
   //sreturn;
   //}
 
-  API.saveTask(task).then(function () {
-    alert("new task saved");
-  });
+  API.saveTask(task).then(function () {});
+  $(".new_task_form").css("display", "none");
+  $(".new_task_saved").css("display","block");
   $task_name.val("");
   $quantity.val("");
   $description.val("");
   $dueDate.val("");
   $estimatedTime.val("");
 };
+var EditTask = function(event){
+  event.preventDefault();
+  API.getTask(task).then(function(){
+
+  })
+}
 //date Picker for Due Date
 $(function () {
   $('input[name="datetimes"]').daterangepicker({
@@ -74,9 +80,16 @@ var modal = function () {
 };
 // eslint-disable-next-line camelcase
 var new_task = function () {
+  $(".new_task_saved").css("display","none");
   $(".new_task_form").css("display", "block");
 };
+var close_save_task = function(){
+  $(".new_task_saved").css("display","none");
+}
 $("#log").on("touchstart click", modal);
 $(".close").on("touchstart click", span);
 $("#new_task").on("touchstart click", new_task);
-$(".submit").on("click", NewTaskSubmit);
+$(".submit").on("touchstart click", NewTaskSubmit);
+$("#edit_task").on("touchstart click",EditTask);
+$(".task_new").on("touchstart click", new_task);
+$(".task_done").on("click", close_save_task);
