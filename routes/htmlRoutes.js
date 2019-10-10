@@ -11,6 +11,8 @@ const authCheck = (req, res, next) => {
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
+    
+    console.log("User Logged ================"+JSON.stringify(req.user));
     res.render("index");
   });
 

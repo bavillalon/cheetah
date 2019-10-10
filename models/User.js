@@ -10,9 +10,9 @@ module.exports = function(sequelize, DataTypes) {
       username: DataTypes.STRING,
       password: DataTypes.STRING,
       googleid: DataTypes.STRING,
-      phone: DataTypes.INTEGER,
+      phone: DataTypes.STRING,
       role: DataTypes.STRING,
-      grade: DataTypes.INTEGER
+      grade: DataTypes.STRING
     },
     {
       instanceMethods: {
