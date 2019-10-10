@@ -123,7 +123,7 @@ module.exports = function(app) {
   });
 
   //Editing a task{task}
-  app.put("/api/editingtask", function(req, res) {
+  app.put("/api/edittask", function(req, res) {
     db.Task.update(req.body, {
       where: {
         id: req.body.id

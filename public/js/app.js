@@ -5,16 +5,28 @@ var $dueDate = $("#dueDate");
 var $estimatedTime = $("#estimatedTime");
 var $submitBtn = $(".submit");
 var API = {
-  saveTask: function (example) {
+  saveTask: function (Task) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/newtask",
-      data: JSON.stringify(example)
+      data: JSON.stringify(Task)
+    }); 
+  },
+  getTask: function() {
+    return $.ajax({
+      url: "api/edittask",
+      type: "GET"
     });
   },
+  deleteTask: function(id) {
+    return $.ajax({
+      url: "api/task/:id" + id,
+      type: "DELETE"
+    });
+  }
 };
 var NewTaskSubmit = function (event) {
   event.preventDefault();
@@ -25,7 +37,6 @@ var NewTaskSubmit = function (event) {
     description: $description.val().trim(),
     dueDate: $dueDate.val().trim(),
     estimatedTime: $estimatedTime.val().trim(),
-    state: "Unassigned"
   };
 
   //if (!(teacher.text && example.description)) {
