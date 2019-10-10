@@ -18,7 +18,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Task.associate = function(models) {
-    Task.hasMany(models.UserTask);
+    Task.hasMany(models.UserTask, {
+      onDelete: "cascade"
+    });
   };
 
   return Task;
