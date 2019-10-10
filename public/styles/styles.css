@@ -20,9 +20,9 @@
 }
 #powered {
   position: absolute;
-  right: 25%;
+  right: 15%;
   font-size: 10px;
-  top: 20%;
+  top: 25%;
 }
 .navbar,
 h4 {
@@ -72,7 +72,7 @@ body {
 .social_icon span {
   font-size: 60px;
   margin-left: 10px;
-  color: #ffc312;
+  color: lightgrey;
 }
 
 .social_icon span:hover {
@@ -92,7 +92,7 @@ body {
 
 .input-group-prepend span {
   width: 50px;
-  background-color: #ffc312;
+  background-color: lightgrey;
   color: black;
   border: 0 !important;
 }
@@ -115,13 +115,13 @@ input:focus {
 
 .login_btn {
   color: black;
-  background-color: #ffc312;
+  background-color: lightgrey;
   width: 100px;
 }
 
 .cancel_btn {
   color: black;
-  background-color: #ffc312;
+  background-color: lightgrey;
   margin-left: 5px;
 }
 
