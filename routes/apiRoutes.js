@@ -105,11 +105,11 @@ module.exports = function(app) {
   //Adding a new task{task}
   app.post("/api/newtask", function(req, res) {
     db.Task.create({
-      name: req.body.name,
+      task_name: req.body.task_name,
       description: req.body.description,
       quantity: req.body.quantity,
-      duedate: req.body.duedate,
-      esttime: req.body.esttime,
+      dueDate: req.body.dueDate,
+      estimatedTime: req.body.estimatedTime,
       state: "Unassigned"
     }).then(function(task) {
       db.UserTask.create({
@@ -122,7 +122,7 @@ module.exports = function(app) {
   });
 
   //Editing a task{task}
-  app.put("/api/editingtask", function(req, res) {
+  app.put("/api/edittask", function(req, res) {
     db.Task.update(req.body, {
       where: {
         id: req.body.id
