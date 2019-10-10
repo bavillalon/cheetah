@@ -1,7 +1,33 @@
 var db = require("../models");
 const bcrypt = require("bcrypt");
+var nodemailer = require('nodemailer');
+
+var mailTransport = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.NODE_EMAIL,
+    pass: process.env.NODE_EMAIL_PW
+  }
+});
 
 module.exports = function(app) {
+  app.post("/api/mail", function(req,res){
+    var mailOptions = {
+      from: process.env.NODE_EMAIL,
+      to: 'bryan@texplm.com',
+      subject: 'Sending Email using Node.js',
+      text: 'Testing the mail server'
+    };
+    mailTransport.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    }); 
+    res.end();
+  })
+
   // Get all tasks
   app.get("/api/tasks", function(req, res) {
     db.Task.findAll({}).then(function(Tasks) {
