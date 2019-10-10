@@ -1,4 +1,5 @@
 var db = require("../models");
+const bcrypt = require("bcrypt");
 
 module.exports = function(app) {
   // Get all tasks
@@ -20,25 +21,23 @@ module.exports = function(app) {
   });
 
   // Get all assigned tasks
-  // app.get("/api/assignedtasks", function(req, res) {
-  //   db.UserTask.findAll({
-  //     order: ["Task", "createdAt", "DESC"],
-  //     include: [
-  //       {
-  //         model: User,
-  //         where: { role: "Volunteer" }
-  //       }
-  //     ],
-  //     include: [
-  //       {
-  //         model: Task,
-  //         where: { state: "Assigned" }
-  //       }
-  //     ]
-  //   }).then(function(tasks) {
-  //     res.json(tasks);
-  //   });
-  // });
+  app.get("/api/assignedtasks", function(req, res) {
+    db.UserTask.findAll({
+      order: ["Task", "createdAt", "DESC"],
+      include: [
+        {
+          model: db.User,
+          where: { role: "Volunteer" }
+        },
+        {
+          model: db.Task,
+          where: { state: "Assigned" }
+        }
+      ]
+    }).then(function(tasks) {
+      res.json(tasks);
+    });
+  });
 
   // Get all tasks from a logged teacher
   app.get("/api/teachertasks", function(req, res) {
@@ -60,7 +59,7 @@ module.exports = function(app) {
           id: req.body.task.id
         }
       }
-    ).then(function(task) {
+    ).then(function(t) {
       db.UserTask.create({
         TaskId: task.id,
         UserId: req.body.volunteerid
@@ -79,7 +78,7 @@ module.exports = function(app) {
           id: req.body.id
         }
       }
-    ).then(function(task) {
+    ).then(function(t) {
       db.UserTask.create({
         TaskId: task.id,
         UserId: req.user.id
@@ -114,7 +113,7 @@ module.exports = function(app) {
       state: "Unassigned"
     }).then(function(task) {
       db.UserTask.create({
-        TaskId: task.id,
+        TaskId: task.dataValues.id,
         UserId: req.user.id
       }).then(function(usertask) {
         res.end();
@@ -146,7 +145,15 @@ module.exports = function(app) {
 
   //Adding a new User{user}
   app.post("/api/newuser", function(req, res) {
-    db.User.create(req.body).then(function(user) {
+    db.User.create({
+      name: req.body.name,
+      email: req.body.email,
+      username: req.body.username,
+      password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null),
+      phone: req.body.phone,
+      role: req.body.role,
+      grade: req.body.grade
+    }).then(function(user) {
       res.json(user);
     });
   });
@@ -173,19 +180,21 @@ module.exports = function(app) {
     });
   });
 
-  //Get all tasks from a logged teacher
+  // Get all users
+  app.get("/api/users", function(req, res) {
+    db.User.findAll({}).then(function(users) {
+      res.json(users);
+    });
+  });
 
-  //   // Create a new example
-  //   app.post("/api/examples", function(req, res) {
-  //     db.Example.create(req.body).then(function(dbExample) {
-  //       res.json(dbExample);
-  //     });
-  //   });
-
-  //   // Delete an example by id
-  //   app.delete("/api/examples/:id", function(req, res) {
-  //     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //       res.json(dbExample);
-  //     });
-  //   });
+  // Get all users
+  app.get("/api/volunteers", function(req, res) {
+    db.User.findAll({
+      where: {
+        role: "Volunteer"
+      }
+    }).then(function(users) {
+      res.json(users);
+    });
+  });
 };
