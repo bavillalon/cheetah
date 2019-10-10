@@ -2,8 +2,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><img src="styles/img/task.png" style="width: 20%" class="d-inline-block align-top" alt="">
-                New Task</h4>
+                <h4 class="modal-title"><img src="styles/img/task.png" style="width: 20%"
+                        class="d-inline-block align-top" alt="">
+                    New Task</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -33,7 +34,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="dueDate">Due Date</label>
-                            <input id="dueDate" type="text" name="datetimes" />
+                            <input type="text" name="datetimes" id="dueDate"/>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="estimatedTime">Estimated Time</label>
@@ -58,6 +59,29 @@
         </div>
     </div>
 </div>
+<!--Task Saved message-->
+<div class="modal new_task_saved" role="task_saved">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4><img src="styles/img/task.png" style="width: 20%" class="d-inline-block align-top" alt="">
+                    New Task</h4>
+                </span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>New task has been saved!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary task_new">New Task</button>
+                <button type="submit" class="btn btn-primary task_done">Done</button>
+            </div>
+        </div>
+    </div>
+
+</div>
 <!--Nav Bar-->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="#" class="logfont">
@@ -71,7 +95,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mt-2 mt-md-0 ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">Sign Out <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html">LogOut <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -103,7 +127,7 @@
             <img src="styles/img/task_delete.png" style="width: 50%" alt="Delete"><br>Delete Task
         </div>
         <div class="col-4 square" id="task_report_Byteacher" style="background-color:#FF6E1D;cursor:pointer ">
-            <img src="styles/img/task_report.png" style="width: 50%" alt="TaskReport"><br>Tasks Report
+            <a href="/allTasks"><img src="styles/img/task_report.png" style="width: 50%" alt="TaskReport"></a><br>Tasks Report
         </div>
     </div>
     <div class="row">
@@ -118,9 +142,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4 square"><!--Margin--></div>
+        <div class="col-4 square">
+            <!--Margin-->
+        </div>
         <div class="col-4 square" id="logOut" style="background-color:#98D9D5;cursor:pointer">
-            <a href="index.html"><img src="styles/img/logout.png" style="width: 50%" alt="LogOut"><br>Sign Out</a>
+            <a href="index.html"><img src="styles/img/logout.png" style="width: 50%" alt="LogOut"><br>LogOut</a>
         </div>
         <div class="col-4 square"></div>
     </div>
