@@ -2,9 +2,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4><img src="styles/img/task.png" style="width: 20%" class="d-inline-block align-top" alt="">
-                    New Task</h4>
-                </span>
+                <h4 class="modal-title"><img src="styles/img/task.png" style="width: 20%" class="d-inline-block align-top" alt="">
+                New Task</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -24,7 +23,7 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="quantity">Quantity</label>
-                            <input type="number" class="form-control" id="quantity">
+                            <input type="number" class="form-control" name="quantity" min="0" max="100" id="quantity">
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,7 +37,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="estimatedTime">Estimated Time</label>
-                             <select id="estimatedTime" class="form-control">
+                            <select id="estimatedTime" class="form-control">
                                 <option selected>Choose one</option>
                                 <option>5 mins</option>
                                 <option>10 mins</option>
@@ -51,15 +50,6 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Check me out
-                                    </label>
-                                </div>
-                            </div>-->
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -81,7 +71,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mt-2 mt-md-0 ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">LogOut <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html">Sign Out <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -92,15 +82,16 @@
         </ul>
     </div>
 </nav>
+<!--Big buttons menu-->
 <div id="loginbutton" style="text-align: center;font-family: 'Montserrat', sans-serif">
     <div class="row">
         <div class="col-2 square">
             <!--Margin-->
         </div>
-        <div class="col-4 square" id="new_task" style="background-color:#F2484B ">
+        <div class="col-4 square" id="new_task" style="background-color:#F2484B; cursor:pointer">
             <img src="styles/img/task.png" style="width: 50%" alt="NewTask"><br>New Task
         </div>
-        <div class="col-4 square" id="edit_task">
+        <div class="col-4 square" id="edit_task" style="cursor:pointer">
             <img src="styles/img/task_edit.png" style="width: 50%" alt="EditTask"><br>Edit Task
         </div>
     </div>
@@ -108,10 +99,10 @@
         <div class="col-2 square">
             <!--Margin-->
         </div>
-        <div class="col-4 square" id="delete_task" style="background-color:#98D9D5">
+        <div class="col-4 square" id="delete_task" style="background-color:#98D9D5;cursor:pointer">
             <img src="styles/img/task_delete.png" style="width: 50%" alt="Delete"><br>Delete Task
         </div>
-        <div class="col-4 square" id="task_report_Byteacher" style="background-color:#FF6E1D ">
+        <div class="col-4 square" id="task_report_Byteacher" style="background-color:#FF6E1D;cursor:pointer ">
             <img src="styles/img/task_report.png" style="width: 50%" alt="TaskReport"><br>Tasks Report
         </div>
     </div>
@@ -119,17 +110,17 @@
         <div class="col-2 square">
             <!--Margin-->
         </div>
-        <div class="col-4 square" id="about_teacher" style="background-color:#CE938E">
+        <div class="col-4 square" id="about_teacher" style="background-color:#CE938E;cursor:pointer">
             <img src="styles/img/about.png" style="width: 50%" alt="About"><br>About
         </div>
-        <div class="col-4 square" id="help_teacher" style="background-color:#F2484B">
+        <div class="col-4 square" id="help_teacher" style="background-color:#F2484B;cursor:pointer">
             <img src="styles/img/help.png" style="width: 50%" alt="Help"><br>Help
         </div>
     </div>
     <div class="row">
-        <div class="col-4 square"></div>
-        <div class="col-4 square" id="logOut" style="background-color:#98D9D5">
-            <a href="index.html"><img src="styles/img/logout.png" style="width: 50%" alt="LogOut"><br>LogOut</a>
+        <div class="col-4 square"><!--Margin--></div>
+        <div class="col-4 square" id="logOut" style="background-color:#98D9D5;cursor:pointer">
+            <a href="index.html"><img src="styles/img/logout.png" style="width: 50%" alt="LogOut"><br>Sign Out</a>
         </div>
         <div class="col-4 square"></div>
     </div>
