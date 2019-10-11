@@ -10,13 +10,23 @@ var mailTransport = nodemailer.createTransport({
   }
 });
 
+//emailRecipient: $("#emailOfUser").val().trim(),
+//nameOfUser: $("#nameOfUser").val().trim(),
+//subjectOfIssue: $("#subjectOfIssue").val().trim(),
+//fullDescription: $("#fullDescription").val().trim(),
 module.exports = function(app) {
   app.post("/api/mail", function(req,res){
     var mailOptions = {
       from: process.env.NODE_EMAIL,
       to: 'bryan@texplm.com',
-      subject: 'Sending Email using Node.js',
-      text: 'Testing the mail server'
+      cc:req.body.emailRecipient,
+      subject: req.body.subjectOfIssue,
+      text: `Hello Admin,
+      User with name ${req.body.nameOfUser} has an issue with the description below:
+      
+      ${req.body.fullDescription}
+      
+      Thanks!`
     };
     mailTransport.sendMail(mailOptions, function(error, info){
       if (error) {

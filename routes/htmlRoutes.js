@@ -25,6 +25,10 @@ module.exports = function(app) {
     res.render("teacher_menu");
   });
 
+  app.get("/help", function(req, res) {
+    res.render("help");
+  });
+
   app.get("/allTasks", function(req, res) {
     db.Task.findAll({}).then(function(data) {
       var hbsObject = {
