@@ -224,18 +224,4 @@ module.exports = function(app) {
     });
   });
 
-//   //to seed the user table
-//   app.post("/api/new", function(req, res) {
-//     db.User.create({
-//       name: "Kimberly",
-//       email: "kimberly@gmail.com",
-//       username: "kimberly",
-//       password: bcrypt.hashSync("kimberly", bcrypt.genSaltSync(8), null),
-//       phone: "8325657345",
-//       role: "Teacher",
-//       grade: "A1"
-//     }).then(function(user) {
-//       res.json(user);
-//     });
-//   });
 };
