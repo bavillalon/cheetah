@@ -14,6 +14,10 @@ $(function () {
             data: emailObj
         }).then(
             function () {
+                $("#emailOfUser").val("")
+                $("#nameOfUser").val("")
+                $("#subjectOfIssue").val("")
+                $("#fullDescription").val("")
                 console.log("sent");
                 location.reload();
             }
