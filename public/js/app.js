@@ -68,7 +68,7 @@ $(function () {
     maxYear: parseInt(moment().format('YYYY'), 10),
     timePicker: true,
     locale: {
-      format: 'M/DD hh:mm A'
+      format: 'M/DD/YY hh:mm A'
     }
   });
 });
