@@ -43,7 +43,32 @@ a:hover {
 .dropdown-backdrop {
   position: static;
 }
-
+.menu,.menu1,.menu2,.menu3,.menu4{
+  border: 1px solid #615f5f;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+}
+.square:before{
+  padding: 0;
+}
+.menu1{
+  background-color:#F2484B;
+}
+.menu2{
+  background-color:#98D9D5;
+}
+.menu3{
+  background-color:#FF6E1D
+}
+.menu4{
+  background-color:#CE938E;
+}
+.menu:hover,.menu1:hover,.menu2:hover,.menu3:hover,.menu4:hover {
+  background-color: #999696;
+}
 /* begin login */
 @import url("https://fonts.googleapis.com/css?family=Numans");
 

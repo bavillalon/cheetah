@@ -39,11 +39,6 @@ var NewTaskSubmit = function (event) {
     estimatedTime: $estimatedTime.val().trim(),
   };
 
-  //if (!(teacher.text && example.description)) {
-  //  alert("You must enter an example text and description!");
-  //sreturn;
-  //}
-
   API.saveTask(task).then(function () {});
   $(".new_task_form").css("display", "none");
   $(".new_task_saved").css("display","block");
@@ -86,10 +81,14 @@ var new_task = function () {
 var close_save_task = function(){
   $(".new_task_saved").css("display","none");
 }
+var about = function(){
+  $(".about").css("display","block");
+}
 $("#log").on("touchstart click", modal);
 $(".close").on("touchstart click", span);
 $("#new_task").on("touchstart click", new_task);
 $(".submit").on("touchstart click", NewTaskSubmit);
 $("#edit_task").on("touchstart click",EditTask);
 $(".task_new").on("touchstart click", new_task);
-$(".task_done").on("click", close_save_task);
+$(".task_done").on("touchstart click", close_save_task);
+$(".about_teacher").on("touchstart click", about);
